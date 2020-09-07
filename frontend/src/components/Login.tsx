@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ExpressApi from '../api-client/ExpressApi';
-import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, Alert } from 'react-bootstrap';
 
 function Login() {
   let [email, setEmail] = useState<string>('');
   let [password, setPassword] = useState<string>('');
+  let [errorMessage, setErrorMessage] = useState<string>('');
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -15,7 +16,12 @@ function Login() {
   };
 
   const attemptLogin = async () => {
-    await ExpressApi.login(email, password);
+    setErrorMessage('');
+    try {
+      await ExpressApi.login(email, password);
+    } catch (error) {
+      setErrorMessage("The Username and Password don't match our records, please check them and try logging in again.");
+    }
   };
 
   return (
@@ -23,6 +29,7 @@ function Login() {
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h1>Login</h1>
+          {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
           <Form>
             <Form.Group>
               <Form.Label>Email:</Form.Label>
@@ -38,8 +45,7 @@ function Login() {
               Login
             </Button>
           </Form>
-
-          <i className="default-login-user">Default user: brandon.mork@yopmail.com / Password@1</i>
+          <i className="default-login-user my-2 d-block">Default user: brandon.mork@yopmail.com / Password@1</i>
         </Col>
       </Row>
     </Container>
