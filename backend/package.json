@@ -6,7 +6,7 @@
     "start:dev": "nodemon",
     "build": "node build.js",
     "test": "nodemon --config ./spec/nodemon.json",
-    "lint": "tslint --project \"tsconfig.json\"",
+    "lint": "tslint --project \"tsconfig.json\""
   },
   "nodemonConfig": {
     "watch": [
@@ -58,6 +58,7 @@
     "jasmine": "^3.6.1",
     "jsonfile": "^6.0.1",
     "nodemon": "^2.0.4",
+    "prettier": "2.1.1",
     "supertest": "^4.0.2",
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",

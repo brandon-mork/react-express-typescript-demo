@@ -9,11 +9,7 @@
     "lines-between-class-members": [true, 2]
   },
   "linterOptions": {
-    "exclude": [
-      "./node_modules/**"
-    ]
+    "exclude": ["./node_modules/**"]
   },
-  "rulesDirectory": [
-    "node_modules/tslint-lines-between-class-members"
-  ]
+  "rulesDirectory": ["node_modules/tslint-lines-between-class-members"]
 }
