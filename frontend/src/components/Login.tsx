@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ExpressApi from '../api-client/ExpressApi';
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 function Login() {
   let [email, setEmail] = useState<string>('');
@@ -18,29 +19,30 @@ function Login() {
   };
 
   return (
-    <div className="login-block">
-      <div className="login-header">Login</div>
+    <Container className="my-5">
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <h1>Login</h1>
+          <Form>
+            <Form.Group>
+              <Form.Label>Email:</Form.Label>
+              <Form.Control id="email-input" type="email" value={email} onChange={onChangeEmail} />
+            </Form.Group>
 
-      <div className="login-input">
-        Username:
-        <br />
-        <input id="email-input" type="text" value={email} onChange={onChangeEmail} />
-      </div>
+            <Form.Group>
+              <Form.Label>Password:</Form.Label>
+              <Form.Control id="password-input" type="password" value={password} onChange={onChangePassword} />
+            </Form.Group>
 
-      <div className="login-input">
-        Password:
-        <br />
-        <input id="pwd-input" type="password" value={password} onChange={onChangePassword} />
-      </div>
+            <Button id="login-btn" className="w-100" onClick={attemptLogin}>
+              Login
+            </Button>
+          </Form>
 
-      <div>
-        <button id="login-btn" onClick={attemptLogin}>
-          Login
-        </button>
-      </div>
-
-      <div className="default-login-user">// Default admin user (Email: "brandon.mork@yopmail.com", Password: "Password@1")</div>
-    </div>
+          <i className="default-login-user">Default user: brandon.mork@yopmail.com / Password@1</i>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
