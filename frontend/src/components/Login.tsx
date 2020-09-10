@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import ExpressApi from '../api-client/ExpressApi';
 import { Button, Form, Container, Row, Col, Alert } from 'react-bootstrap';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Routes from '../constants/routes';
 
-function Login() {
+interface LoginProps extends RouteComponentProps {}
+function Login(props: LoginProps) {
   let [email, setEmail] = useState<string>('');
   let [password, setPassword] = useState<string>('');
   let [errorMessage, setErrorMessage] = useState<string>('');
@@ -19,6 +22,7 @@ function Login() {
     setErrorMessage('');
     try {
       await ExpressApi.login(email, password);
+      props.history.push(Routes.Summary);
     } catch (error) {
       setErrorMessage("The Username and Password don't match our records, please check them and try logging in again.");
     }
@@ -41,7 +45,7 @@ function Login() {
               <Form.Control id="password-input" type="password" value={password} onChange={onChangePassword} />
             </Form.Group>
 
-            <Button id="login-btn" className="w-100" onClick={attemptLogin}>
+            <Button id="login-btn" className="w-100" type="submit" onClick={attemptLogin}>
               Login
             </Button>
           </Form>
@@ -52,4 +56,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withRouter(Login);

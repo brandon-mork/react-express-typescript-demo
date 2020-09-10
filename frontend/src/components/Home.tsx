@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Routes from '../constants/routes';
 
 function Home() {
   return (
-    <div className="login-block">
-      <div className="login-header">Welcome</div>
+    <div className="home-block">
+      <div className="home-header">Welcome</div>
 
       <div>
-        Would you like to <Link to="/app/login">log in</Link>?
+        Would you like to <Link to={Routes.Login}>log in</Link>?
       </div>
     </div>
   );
