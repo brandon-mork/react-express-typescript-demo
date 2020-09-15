@@ -3,6 +3,7 @@ import ExpressApi from '../api-client/ExpressApi';
 import { Button, Form, Container, Row, Col, Alert } from 'react-bootstrap';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Routes from '../constants/routes';
+import Header from './Header';
 
 interface LoginProps extends RouteComponentProps {}
 function Login(props: LoginProps) {
@@ -29,30 +30,33 @@ function Login(props: LoginProps) {
   };
 
   return (
-    <Container className="my-5">
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          <h1>Login</h1>
-          {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-          <Form>
-            <Form.Group>
-              <Form.Label>Email:</Form.Label>
-              <Form.Control id="email-input" type="email" value={email} onChange={onChangeEmail} />
-            </Form.Group>
+    <div>
+      <Header></Header>
+      <Container>
+        <Row style={{ marginTop: '15%' }}>
+          <Col md={{ span: 6, offset: 3 }}>
+            <h1>Login</h1>
+            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+            <Form>
+              <Form.Group>
+                <Form.Label>Email:</Form.Label>
+                <Form.Control id="email-input" type="email" value={email} onChange={onChangeEmail} />
+              </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Password:</Form.Label>
-              <Form.Control id="password-input" type="password" value={password} onChange={onChangePassword} />
-            </Form.Group>
+              <Form.Group>
+                <Form.Label>Password:</Form.Label>
+                <Form.Control id="password-input" type="password" value={password} onChange={onChangePassword} />
+              </Form.Group>
 
-            <Button id="login-btn" className="w-100" type="submit" onClick={attemptLogin}>
-              Login
-            </Button>
-          </Form>
-          <i className="default-login-user my-2 d-block">Default user: brandon.mork@yopmail.com / Password@1</i>
-        </Col>
-      </Row>
-    </Container>
+              <Button id="login-btn" className="w-100" type="submit" onClick={attemptLogin}>
+                Login
+              </Button>
+            </Form>
+            <i className="default-login-user my-2 d-block">Default user: brandon.mork@yopmail.com / Password@1</i>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
