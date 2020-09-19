@@ -33,7 +33,7 @@ function Login(props: LoginProps) {
     <div>
       <Header></Header>
       <Container>
-        <Row style={{ marginTop: '15%' }}>
+        <Row style={{ marginTop: '12%' }}>
           <Col md={{ span: 6, offset: 3 }}>
             <h1>Login</h1>
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
